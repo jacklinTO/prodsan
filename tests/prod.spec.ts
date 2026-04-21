@@ -15,6 +15,6 @@ test('weberify is up', async ({ page }) => {
 });
 
 test('qualstride is up', async ({ page }) => {
-  await page.goto('https://weberify.com/');
+  await page.goto('https://qualstride.com/');
 	await expect(page).toHaveTitle(/Qualstride/);
 });
