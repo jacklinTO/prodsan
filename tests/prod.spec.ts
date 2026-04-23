@@ -17,10 +17,11 @@ test('weberify is up', async ({ page }) => {
 test('qualstride is up', async ({ page }) => {
   await page.goto('https://qualstride.com/');
 	await expect(page).toHaveTitle(/Qualstride/);
-  await expect(page.getByRole('link', { name: 'The Problem' })).toBeVisible();
-	await expect(page.getByRole('link', { name: 'Results' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'The Difference' })).toBeVisible();
-	await expect(page.getByRole('link', { name: 'Services' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'About' })).toBeVisible();
-	await expect(page.getByRole('link', { name: 'Work with Jack' })).toBeVisible();
+  await expect(page.locator('#nav-links').getByRole('link', { name: 'The Problem' })).toBeVisible();
+	await expect(page.locator('#nav-links').getByRole('link', { name: 'Results' })).toBeVisible();
+  await expect(page.locator('#nav-links').getByRole('link', { name: 'The Difference' })).toBeVisible();
+	await expect(page.locator('#nav-links').getByRole('link', { name: 'Services' })).toBeVisible();
+  await expect(page.locator('#nav-links').getByRole('link', { name: 'About' })).toBeVisible();
+	await expect(page.locator('#nav-links').getByRole('link', { name: 'Work with Jack' })).toBeVisible();
+	await expect(page.locator('.hero-content')).toBeVisible();
 });
