@@ -14,16 +14,15 @@ test('weberify is up', async ({ page }) => {
   await expect.soft(page.getByRole('heading', { name: 'Taking Web Application Testing To The Next Level' })).toBeVisible();
 });
 
-test('qualstride is up', async ({ page, isMobile }) => {
-  const urlMap: Record<string, string> = {
-		'https://qualstride.com/': 'Qualstride',
-		'https://qualstride.com/stride.html': 'STRIDE'
-	};
-	
-	Object.keys(urlMap).forEach((key) => {
-	  const value = urlMap[key];
-		const titleRegex = new RegExp(`^${value}`);
-	  await page.goto(key);
+const urlMap: Record<string, string> = {
+	'https://qualstride.com/': 'Qualstride',
+	//'https://qualstride.com/stride.html': 'STRIDE'
+};
+
+for (const [url, title] of Object.entries(urlMap)) {
+	test(`qualstrid - ${url} is up`, async ({ page, isMobile }) => {
+		const titleRegex = new RegExp(`^${title}`);
+	  await page.goto(url);
 		await expect.soft(page).toHaveTitle(titleRegex);
 		if (isMobile) {
 			await page.locator('#nav-toggle').click();
@@ -35,5 +34,5 @@ test('qualstride is up', async ({ page, isMobile }) => {
 	  await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'About' })).toBeVisible();
 		await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'Work with Jack' })).toBeVisible();
 		await expect.soft(page.locator('.hero')).toBeVisible();
-	});
-});
+	})
+}
