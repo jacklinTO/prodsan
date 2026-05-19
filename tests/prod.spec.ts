@@ -16,11 +16,11 @@ test('weberify is up', async ({ page }) => {
 
 const urlMap: Record<string, string> = {
 	'https://qualstride.com/': 'Qualstride',
-	//'https://qualstride.com/stride.html': 'STRIDE'
+	'https://qualstride.com/stride.html': 'STRIDE'
 };
 
 for (const [url, title] of Object.entries(urlMap)) {
-	test(`qualstrid - ${url} is up`, async ({ page, isMobile }) => {
+	test(`qualstride - ${url} is up`, async ({ page, isMobile }) => {
 		const titleRegex = new RegExp(`^${title}`);
 	  await page.goto(url);
 		await expect.soft(page).toHaveTitle(titleRegex);
