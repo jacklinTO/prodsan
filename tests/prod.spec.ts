@@ -15,16 +15,25 @@ test('weberify is up', async ({ page }) => {
 });
 
 test('qualstride is up', async ({ page, isMobile }) => {
-  await page.goto('https://qualstride.com/');
-	await expect.soft(page).toHaveTitle(/Qualstride/);
-	if (isMobile) {
-		await page.locator('#nav-toggle').click();
-	}
-	await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'The Problem' })).toBeVisible();
-	await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'Results' })).toBeVisible();
-  await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'The Difference' })).toBeVisible();
-	await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'Services' })).toBeVisible();
-  await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'About' })).toBeVisible();
-	await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'Work with Jack' })).toBeVisible();
-	await expect.soft(page.locator('.hero-content')).toBeVisible();
+  const urlMap: Record<string, string> = {
+		'https://qualstride.com/': 'Qualstride',
+		'https://qualstride.com/stride.html': 'STRIDE'
+	};
+	
+	Object.keys(urlMap).forEach((key) => {
+	  const value = urlMap[key];
+		const titleRegex = new RegExp(`^${value}`);
+	  await page.goto(key);
+		await expect.soft(page).toHaveTitle(titleRegex);
+		if (isMobile) {
+			await page.locator('#nav-toggle').click();
+		}
+		await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'The Problem' })).toBeVisible();
+		await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'Results' })).toBeVisible();
+	  await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'The Difference' })).toBeVisible();
+		await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'Services' })).toBeVisible();
+	  await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'About' })).toBeVisible();
+		await expect.soft(page.locator('#nav-links').getByRole('link', { name: 'Work with Jack' })).toBeVisible();
+		await expect.soft(page.locator('.hero')).toBeVisible();
+	});
 });
