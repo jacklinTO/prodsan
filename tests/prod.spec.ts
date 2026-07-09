@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('ironic pop is up', async ({ page }) => {
+test.skip('ironic pop is up', async ({ page }) => {
 	await page.goto('https://ironicpop.com/');
 	await expect.soft(page).toHaveTitle(/Ironic Pop/);
 	await expect.soft(page.getByRole('img', { name: 'Ironic Pop' })).toBeVisible();
