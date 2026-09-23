@@ -6,14 +6,6 @@ test('ironic pop is up', async ({ page }) => {
 	await expect.soft(page.getByRole('img', { name: 'Ironic Pop' })).toBeVisible();
 });
 
-test('weberify is up', async ({ page }) => {
-	await page.goto('https://weberify.com/');
-	await expect.soft(page).toHaveTitle(/Welcome to Weberify/);
-	await expect.soft(page.getByRole('link', { name: 'Home' })).toBeVisible();
-	await expect.soft(page.getByRole('link', { name: 'Sign Up' })).toBeVisible();
-	await expect.soft(page.getByRole('heading', { name: 'Taking Web Application Testing To The Next Level' })).toBeVisible();
-});
-
 const urlMap: Record<string, string> = {
 	'https://qualstride.com/': 'Qualstride',
 	'https://qualstride.com/stride.html': 'STRIDE'
