@@ -1,0 +1,27 @@
+- banner:
+  - navigation:
+    - link "Qualstride":
+      - /url: "#top"
+    - button "Toggle menu" [expanded]
+    - list:
+      - listitem:
+        - link "The Problem":
+          - /url: "#problem"
+      - listitem:
+        - link "Results":
+          - /url: "#results"
+      - listitem:
+        - link "The Difference":
+          - /url: "#difference"
+      - listitem:
+        - link "Services":
+          - /url: "#services"
+      - listitem:
+        - link "About":
+          - /url: "#about"
+      - listitem:
+        - link "STRIDE":
+          - /url: stride.html
+      - listitem:
+        - link "Work with Jack":
+          - /url: "#contact"
